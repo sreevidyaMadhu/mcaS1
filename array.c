@@ -1,6 +1,6 @@
 #include<stdio.h>
 int main() {
-    int arr[5],n,i,j,temp;
+    int arr[5],n,i,j,temp,pos;
     printf("Enter the number of elements in the array: ");
     scanf("%d", &n);
     printf("Enter the elements of the array:\n");
@@ -24,5 +24,24 @@ int main() {
     printf("\nSorted array (ascending): ");
     for (i = 0; i < n; i++) {
         printf("%d ", arr[i]);
+    }
+     printf("Enter position to delete (1 to %d-1): ", n);
+    scanf("%d", &pos);
+
+    // Check if position is valid
+    if (pos < 1 || pos > n) {
+        printf("Invalid position!\n");
+    } else {
+        // Shift elements to left from the position
+        for (i = pos - 1; i < n - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        n--; // Reduce array size
+
+        // Display updated array
+        printf("Array after deletion:\n");
+        for (i = 0; i < n; i++) {
+            printf("%d ", arr[i]);
+        }
     }
 }
