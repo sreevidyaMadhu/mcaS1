@@ -43,12 +43,23 @@ int main() {
     int n;
     while (1) {
         printf("\n1. Push  2. Pop  3. Display  4. Exit\n");
-        scanf("%d", &n);
+        if (scanf("%d", &n) != 1) {
+            printf("Invalid input\n");
+            // Clear input buffer
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF);
+            continue;
+        }
         switch (n) {
             case 1: {
                 int value;
                 printf("Enter value: ");
-                scanf("%d", &value);
+                if (scanf("%d", &value) != 1) {
+                    printf("Invalid input\n");
+                    int c;
+                    while ((c = getchar()) != '\n' && c != EOF);
+                    break;
+                }
                 push(value);
                 break;
             }
